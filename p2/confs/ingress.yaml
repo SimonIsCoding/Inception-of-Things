@@ -4,11 +4,11 @@ metadata:
   name: ingress
 spec:
   ingressClassName: traefik
-  defaultBackend:
-    service:
-      name: app3
-      port:
-        number: 80
+    #  defaultBackend:
+    #service:
+    # name: app3
+    # port:
+    #   number: 80
   rules:
   - host: app1.com
     http:
@@ -28,5 +28,14 @@ spec:
         backend:
           service:
             name: app2
+            port:
+              number: 80
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app3
             port:
               number: 80
