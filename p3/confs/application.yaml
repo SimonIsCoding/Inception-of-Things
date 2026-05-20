@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: imounjed-iot
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/idrme/imounjed_iot
+    targetRevision: HEAD
+    path: . # Le chemin dans le repo contenant les fichiers de config du cluster k3s
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
