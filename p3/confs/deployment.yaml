@@ -30,7 +30,7 @@ metadata:
   namespace: dev 
 spec:
   selector:
-    app: app3
+    app: wil-playground
   ports:
     - protocol: TCP
       port: 8888
