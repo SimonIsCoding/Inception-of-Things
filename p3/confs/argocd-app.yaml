@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/SimonIsCoding/Inception-of-Things
-    targetRevision: HEAD
+    targetRevision: simarcha
     path: p3/confs
   destination:
     server: https://kubernetes.default.svc
