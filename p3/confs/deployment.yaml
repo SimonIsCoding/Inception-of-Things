@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: app3-deployment
+  name: wil-playground
+  namespace: dev
   labels:
-    app: app3
+    app: wil-playground
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app3
+      app: wil-playground
   template:
     metadata:
       labels:
-        app: app3
+        app: wil-playground
     spec:
       containers:
         - name: nginx 
-          image: nginx 
+          image: wil42/playground:v1 
           ports:
-            - containerPort: 80
+            - containerPort: 8888
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: app3
+  name: wil-playground
+  namespace: dev 
 spec:
-  type: Nodeport
   selector:
     app: app3
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30080
+      port: 8888
+      targetPort: 8888

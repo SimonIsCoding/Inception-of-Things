@@ -34,3 +34,13 @@ if ! command -v k3d &> /dev/null
 then
 	install_k3d
 fi
+
+k3d cluster create iot
+kubectl create namespace argocd
+kubectl create namespace dev
+
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd
+
+echo "Installation finished !"
