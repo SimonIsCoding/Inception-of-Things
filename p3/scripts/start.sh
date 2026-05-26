@@ -10,7 +10,8 @@ kubectl create namespace argocd
 kubectl create namespace dev
 
 # Installe Argo CD dans le namespace argocd du cluster
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply --server-side -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 # Attend le déploiement d'argo CD
 kubectl wait deployment \
